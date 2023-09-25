@@ -4,7 +4,7 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config(); // Load environment variables from .env file
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3008;
 
 // Function to generate a random 10-digit number
 function generateRandomID() {

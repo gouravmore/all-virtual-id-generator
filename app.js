@@ -11,6 +11,14 @@ function generateRandomID() {
   return Math.floor(1000000000 + Math.random() * 9000000000);
 }
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH,DELETE,OPTIONS')
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization,' + 'cid, user-id, x-auth, Cache-Control, X-Requested-With, datatype, *')
+  if (req.method === 'OPTIONS') res.sendStatus(200)
+  else next()
+});
+
 // Define a route to generate a virtual ID for a user
 app.get('/generateVirtualID', async (req, res) => {
   const username = req.query.username;
